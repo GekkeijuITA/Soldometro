@@ -1,0 +1,18 @@
+.container{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    border: 3px solid white;
+    font-size: 200%;
+}
+body{
+    background: rgb(1,3,1);
+    background: linear-gradient(90deg, rgba(1,3,1,1) 0%, rgba(7,255,0,1) 50%, rgba(1,3,1,1) 100%);
+}
+#stop,#reset{
+    background-color: lightcoral;
+}
+#go{
+    background-color: lightgreen;
+}

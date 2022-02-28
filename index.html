@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title id="titolo">00:00:00 - €0.00</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <link rel="stylesheet" href="newcss.css" type="text/css">
+    </head>
+    <body>
+        <script>
+            var h=0;
+            var m=0;
+            var s=0;
+            var soldi=0;
+            function Tempo(){
+                s++;
+                soldi+=0.0013888888888889;
+                if(s>=60){
+                    s=0;
+                    m++;
+                    if(m>=60){
+                        m=0;
+                        h++;
+                        if(h>=24){
+                            h=0;
+                        }
+                    }
+                }
+                stampa();
+            }
+            function reset(){
+                h=0;
+                m=0;
+                s=0;
+                soldi=0;
+                stampa();
+                able();
+            }
+            function stampa(){
+                if(s<10){                   
+                    if(m<10){
+                        if(h<10){
+                            document.getElementById("scriviTempo").innerHTML = "0"+h+":0"+m+":0"+s;
+                            document.getElementById("titolo").innerHTML ="0"+h+":0"+m+":0"+s+" - € "+soldi.toFixed(2);
+                        }       
+                        else{
+                            document.getElementById("scriviTempo").innerHTML = h+":0"+m+":0"+s;
+                            document.getElementById("titolo").innerHTML =h+":0"+m+":0"+s+" - € "+soldi.toFixed(2);
+                        }
+                    }
+                    else{
+                        document.getElementById("scriviTempo").innerHTML = h+":"+m+":0"+s;
+                        document.getElementById("titolo").innerHTML =h+":"+m+":0"+s+" - € "+soldi.toFixed(2);
+                    }
+                }
+                else{
+                    if(m<10){
+                        if(h<10){
+                            document.getElementById("scriviTempo").innerHTML = "0"+h+":0"+m+":"+s;
+                            document.getElementById("titolo").innerHTML ="0"+h+":0"+m+":"+s+" - € "+soldi.toFixed(2);
+                        }
+                        else{
+                            document.getElementById("scriviTempo").innerHTML = h+":0"+m+":"+s;
+                            document.getElementById("titolo").innerHTML =h+":0"+m+":"+s+" - € "+soldi.toFixed(2);
+                        }
+                    }
+                    else{
+                        if(h<10){
+                            document.getElementById("scriviTempo").innerHTML = "0"+h+":"+m+":"+s;
+                            document.getElementById("titolo").innerHTML ="0"+h+":"+m+":"+s+" - € "+soldi.toFixed(2);
+                        }
+                        else{
+                            document.getElementById("scriviTempo").innerHTML = h+":"+m+":"+s;
+                            document.getElementById("titolo").innerHTML =h+":"+m+":"+s+" - € "+soldi.toFixed(2);
+                        }
+                    }
+                }    
+                document.getElementById("scriviSoldi").innerHTML = "€ "+soldi.toFixed(2);
+            }
+            function disable(){
+                var button = document.getElementById("go");
+                button.disabled=true;
+            }
+            function able(){
+                var button = document.getElementById("go");
+                button.disabled=false;
+            }
+        </script>
+        <div class="container">
+            <div id="scriviTempo">00:00:00</div>
+            <div id="scriviSoldi">€ 0.00</div>
+            <button onclick="clearInterval(myVar);able()" id="stop" class="stop">Stop</button> 
+            <button onclick="myVar=setInterval(Tempo,1000);disable()" id="go" class="go">Go</button>
+            <button onclick="clearInterval(myVar);reset()" id="reset" class="reset">Reset</button>
+        </div>
+    </body>
+</html>
